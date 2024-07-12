@@ -3,6 +3,7 @@ import { Noto_Sans } from 'next/font/google'
 import type { ReactNode } from 'react'
 
 import './globals.css'
+import Providers from './providers'
 
 const notoSans = Noto_Sans({
 	subsets: ['latin'],
@@ -21,7 +22,9 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 	return (
 		<html lang="en">
-			<body className={notoSans.className}>{children}</body>
+			<body className={notoSans.className}>
+				<Providers>{children}</Providers>
+			</body>
 		</html>
 	)
 }
