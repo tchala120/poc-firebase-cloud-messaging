@@ -11,6 +11,10 @@ const Message = () => {
 	const { fcmToken, messaging } = useFirebaseContext()
 
 	useEffect(() => {
+		if (messaging == null) {
+			return
+		}
+
 		const unsubscribe = onMessage(messaging, (payload) => {
 			console.log('Here is the payload from FCM', payload)
 
