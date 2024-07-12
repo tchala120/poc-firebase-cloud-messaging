@@ -2,6 +2,8 @@ import { useMutation } from '@tanstack/react-query'
 
 import { useFirebaseContext } from '@/context/useFirebaseContext'
 
+import { Button } from './Button'
+
 export const SendTestNotificationButton = () => {
 	const { fcmToken } = useFirebaseContext()
 
@@ -26,10 +28,9 @@ export const SendTestNotificationButton = () => {
 	})
 
 	return (
-		<button
+		<Button
 			disabled={sendTestNotificationMutation.isPending}
-			className="px-4 py-2 border border-gray-300 rounded-md transition-all bg-white hover:bg-slate-100 disabled:pointer-events-none disabled:bg-gray-300 disabled:text-gray-500"
-			onClick={() => {
+			onClick={async () => {
 				if (fcmToken == null) {
 					return
 				}
@@ -47,6 +48,6 @@ export const SendTestNotificationButton = () => {
 			}}
 		>
 			Send Test Notification
-		</button>
+		</Button>
 	)
 }
