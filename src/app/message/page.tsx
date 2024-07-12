@@ -18,7 +18,7 @@ const Message = () => {
 		const unsubscribe = onMessage(messaging, (payload) => {
 			console.log('Here is the payload from FCM', payload)
 
-			setResult((prev) => [...prev, payload])
+			setResult((prev) => [payload, ...prev])
 		})
 
 		return () => {
