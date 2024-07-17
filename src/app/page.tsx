@@ -1,28 +1,30 @@
 'use client'
 
-import { Button } from '@/components/Button'
+import { Col, Row } from 'antd'
+
 import { SendTestNotificationButton } from '@/components/SendTestNotificationButton'
 
-import { useFirebaseContext } from '@/context/useFirebaseContext'
-
 export default function Home() {
-	const { isLoggedIn, fcmToken, signIn, signOut } = useFirebaseContext()
-
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-center gap-8 p-24">
-			<h1>PoC Firebase Cloud Messaging</h1>
+		<main className="h-full p-8">
+			<Row gutter={[32, 32]}>
+				<Col span={16}>
+					<div className="min-w-full h-[400px] bg-gray-300">
+						<SendTestNotificationButton />
+					</div>
 
-			<span>FCM Token: {fcmToken}</span>
+					<div className="p-4" />
 
-			{isLoggedIn ? (
-				<>
-					<SendTestNotificationButton />
+					<div className="min-w-full h-[400px] bg-gray-300" />
+				</Col>
+				<Col span={8}>
+					<div className="min-w-full h-full bg-gray-300" />
+				</Col>
 
-					<Button onClick={() => signOut()}>Sign Out</Button>
-				</>
-			) : (
-				<Button onClick={() => signIn()}>Sign In</Button>
-			)}
+				<Col span={24}>
+					<div className="min-w-full h-[120px] bg-gray-300" />
+				</Col>
+			</Row>
 		</main>
 	)
 }
