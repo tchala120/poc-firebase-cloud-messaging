@@ -18,7 +18,9 @@ export async function POST(request: Request) {
 			token: result.token,
 			data: {
 				title: result.title,
-				...result.body,
+				body: result.description,
+				imageUrl: result.imageUrl,
+				link: result.link,
 			},
 		}
 
