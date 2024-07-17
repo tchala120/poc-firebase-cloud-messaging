@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Noto_Sans } from 'next/font/google'
 import type { ReactNode } from 'react'
 
+import { Navbar } from '@/components/Navbar'
+
 import './globals.css'
 import Providers from './providers'
 
@@ -23,7 +25,17 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 	return (
 		<html lang="en">
 			<body className={notoSans.className}>
-				<Providers>{children}</Providers>
+				<Providers>
+					<Navbar />
+
+					<div
+						style={{
+							minHeight: 'calc(100vh - 72px)',
+						}}
+					>
+						{children}
+					</div>
+				</Providers>
 			</body>
 		</html>
 	)
