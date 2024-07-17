@@ -8,7 +8,14 @@ export const SendTestNotificationButton = () => {
 	const { fcmToken } = useFirebaseContext()
 
 	const sendTestNotificationMutation = useMutation({
-		mutationFn: async (data: { token: string; title: string; body?: any }) => {
+		mutationFn: async (data: {
+			token: string
+			title: string
+			description: string
+			imageUrl?: string
+			link?: string
+			body?: any
+		}) => {
 			const response = await fetch('/api/send-notification', {
 				method: 'POST',
 				headers: {
@@ -38,6 +45,9 @@ export const SendTestNotificationButton = () => {
 				sendTestNotificationMutation.mutate({
 					token: fcmToken,
 					title: 'This is a test notification',
+					description: 'Lorem',
+					imageUrl: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',
+					link: 'https://google.com',
 					body: {
 						product: 'iPhone',
 						price: '1000',
