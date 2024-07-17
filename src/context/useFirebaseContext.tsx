@@ -120,6 +120,8 @@ export const FirebaseProvider = ({ children }: FirebaseProviderProps) => {
 			await auth.signOut()
 
 			setFirebaseUser(null)
+			setFCMMessaging(null)
+			setFCMToken(null)
 		} catch (error) {
 			console.log('Error signing out user', error)
 		}
