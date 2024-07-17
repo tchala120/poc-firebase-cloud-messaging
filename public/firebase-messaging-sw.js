@@ -26,15 +26,19 @@ try {
 messaging.onBackgroundMessage(async (payload) => {
 	console.log('[firebase-messaging-sw.js] Received background message ', payload)
 
-	const { title, body, imageUrl, link } = payload.data
+	const { link } = payload.data
 
-	self.registration.showNotification(title, {
-		body,
-		icon: imageUrl,
+	const notificationTitle = payload.notification.title
+
+	const notificationOptions = {
+		body: payload.notification.body,
+		icon: payload.notification.image,
 		data: {
 			link,
 		},
-	})
+	}
+
+	self.registration.showNotification(notificationTitle, notificationOptions)
 })
 
 self.addEventListener('notificationclick', (event) => {
