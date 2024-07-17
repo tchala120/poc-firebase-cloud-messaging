@@ -17,10 +17,12 @@ export async function POST(request: Request) {
 		const message: Message = {
 			token: result.token,
 			data: {
+				link: result.link,
+			},
+			notification: {
 				title: result.title,
 				body: result.description,
 				imageUrl: result.imageUrl,
-				link: result.link,
 			},
 		}
 
@@ -32,9 +34,14 @@ export async function POST(request: Request) {
 			result: messageResult,
 		})
 	} catch (error) {
-		return NextResponse.json({
-			success: false,
-			error,
-		})
+		return NextResponse.json(
+			{
+				success: false,
+				error,
+			},
+			{
+				status: 500,
+			},
+		)
 	}
 }
