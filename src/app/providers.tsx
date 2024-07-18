@@ -21,6 +21,11 @@ const Providers = ({ children }: ProvidersProps) => {
 					token: {
 						fontFamily: 'inherit',
 					},
+					components: {
+						List: {
+							itemPaddingLG: '8px',
+						},
+					},
 				}}
 			>
 				<App>
