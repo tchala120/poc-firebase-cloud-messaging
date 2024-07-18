@@ -2,16 +2,12 @@
 
 import { Col, Row } from 'antd'
 
-import { SendTestNotificationButton } from '@/components/SendTestNotificationButton'
-
 export default function Home() {
 	return (
 		<main className="h-full p-8">
 			<Row gutter={[32, 32]}>
 				<Col span={16}>
-					<div className="min-w-full h-[400px] bg-gray-300">
-						<SendTestNotificationButton />
-					</div>
+					<div className="min-w-full h-[400px] bg-gray-300" />
 
 					<div className="p-4" />
 
