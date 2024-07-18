@@ -52,20 +52,26 @@ export async function GET(request: Request) {
 			const data = doc.data()
 
 			return {
-				id: doc.id,
+				id: data.id,
 				title: data.title,
 				description: data.description,
-				imageUrl: data.imageUrl,
+				imageURL: data.imageURL,
 				link: data.link,
-				createdAt: data.createdAt,
+				to: data.to,
+				status: data.status,
 			}
 		})
+
+		const unreadCount = notifications.filter((notification) => notification.status === 'unread').length
 
 		return NextResponse.json(
 			{
 				status: 200,
 				message: 'Successfully',
-				data: notifications,
+				data: {
+					unreadCount,
+					notifications,
+				},
 			},
 			{
 				status: 200,
