@@ -149,8 +149,22 @@ export const FirebaseProvider = ({ children }: FirebaseProviderProps) => {
 
 	if (loading) {
 		return (
-			<div className="flex justify-center items-center min-h-screen">
-				<h1 className="m-0 text-center font-bold text-4xl">Loading...</h1>
+			<div
+				style={{
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
+					height: '100vh',
+				}}
+			>
+				<h1
+					style={{
+						fontSize: '1.5rem',
+						fontWeight: 'bold',
+					}}
+				>
+					Loading...
+				</h1>
 			</div>
 		)
 	}
